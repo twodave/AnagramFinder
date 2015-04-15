@@ -1,0 +1,17 @@
+﻿<h1>Anagram Finder</h1>
+
+    <p>Type a word: </p>
+    <input type="text" id="word" name="word" />
+    <button type="button" onclick="showAnagrams()">Search</button>
+
+<h2 id="resultHeader"></h2>
+<div id="results"></div>
+<script>
+    function showAnagrams() {
+        var word = $('#word').val();
+        $.getJSON('/api/anagram?word=' + word, function (data) {
+            $('#resultHeader').html("Results for '" + word + "'");
+            $('#results').html(JSON.stringify(data));
+        });
+    }
+</script>
